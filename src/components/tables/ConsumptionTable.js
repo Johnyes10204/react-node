@@ -33,7 +33,7 @@ const ConsumptionTable = () => {
             <TableRow>
               <TableCell>Usuario</TableCell>
               <TableCell>Maquina</TableCell>
-              <TableCell>Cinta</TableCell>
+              <TableCell>Tintas</TableCell>
               <TableCell>Cantidad</TableCell>
               <TableCell>Fecha</TableCell>
             </TableRow>

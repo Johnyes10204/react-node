@@ -16,9 +16,6 @@ function App() {
         <li>
           <Link to="/consumtion">Consumos</Link>
         </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
       </ul>
     </nav>
     <Routes>
