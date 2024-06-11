@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Alert, Card, CardContent, CardActions, Grid, Avatar } from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import UserTable from '../tables/UserTable';
-
 
 function formatDate() {
   const d = new Date();
@@ -20,7 +20,7 @@ const UserForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setPassword(formatDate()) 
+    setPassword(formatDate());
     try {
       const response = await axios.post('http://localhost:3001/api/users', {
         "name": name,
@@ -37,42 +37,58 @@ const UserForm = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Create User
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Username"
-            value={name}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-            Crear usuario
-          </Button>
-        </form>
-        {message && (
-          <Alert severity={message.includes('success') ? 'success' : 'error'} sx={{ mt: 2 }}>
-            {message}
-          </Alert>
-        )}
+        <Card>
+          <CardContent>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item>
+                <Avatar sx={{ bgcolor: 'primary.main' }}>
+                  <PersonAddIcon />
+                </Avatar>
+              </Grid>
+              <Grid item>
+                <Typography variant="h4" component="h1">
+                  Create User
+                </Typography>
+              </Grid>
+            </Grid>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Username"
+                value={name}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <CardActions>
+                <Button type="submit" variant="contained" color="primary" startIcon={<PersonAddIcon />}>
+                  Crear usuario
+                </Button>
+              </CardActions>
+            </Box>
+            {message && (
+              <Alert severity={message.includes('success') ? 'success' : 'error'} sx={{ mt: 2 }}>
+                {message}
+              </Alert>
+            )}
+          </CardContent>
+        </Card>
       </Box>
-      <UserTable/>
+      <Box sx={{ mt: 4 }}>
+        <UserTable />
+      </Box>
     </Container>
-
   );
 };
 
