@@ -21,11 +21,20 @@ const ConsumptionT = () => {
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
 
+
+  function formatDate() {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0'); // Los meses van de 0 a 11
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   const handleCreateTapeConsumption = async () => {
     const newTapeConsumption = {
       machine_id: machineId,
       tape_id: tapeId,
-      consumption_date: consumptionDate,
+      consumption_date: formatDate(),
       quantity_consumed: quantityConsumed,
     };
 
@@ -118,17 +127,7 @@ const ConsumptionT = () => {
             ))}
           </Select>
         </FormControl>
-        <TextField
-          label="Consumption Date"
-          type="date"
-          value={consumptionDate}
-          onChange={(e) => setConsumptionDate(e.target.value)}
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+       
         <TextField
           label="Quantity Consumed"
           value={quantityConsumed}

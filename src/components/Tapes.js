@@ -70,25 +70,25 @@ const Tapes = () => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Create New Tape
+         Crear insumo
       </Typography>
       <Box mb={2}>
         <TextField
-          label="Name"
+          label="Nombre"
           value={name}
           onChange={(e) => setName(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Description"
+          label="Descripción"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Acquisition Date"
+          label="Fecha de compra"
           type="date"
           value={acquisitionDate}
           onChange={(e) => setAcquisitionDate(e.target.value)}
@@ -99,12 +99,12 @@ const Tapes = () => {
           }}
         />
         <Button variant="contained" color="primary" onClick={handleCreateTape}>
-          Create Tape
+          Crear insumos
         </Button>
       </Box>
 
       <Typography variant="h4" gutterBottom>
-        List of Tapes
+            Lista de insumos
       </Typography>
       <List>
         {tapes.map((tape) => (

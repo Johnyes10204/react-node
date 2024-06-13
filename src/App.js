@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { makeStyles } from '@mui/material/styles'; // Corregido el import aquí
 import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -13,6 +12,7 @@ import Tapes from './components/Tapes';
 import AsigTapes from './components/AssigmentsTapes';
 import ConsumptionT from './components/ConsumtionT';
 import Machines from './components/Machines';
+import User from './components/User';
 
 
 
@@ -29,11 +29,14 @@ function App() {
           <Button component={Link} to="/" color="inherit" startIcon={<HomeIcon />}>
             Inicio
           </Button>
+          <Button component={Link} to="/user" color="inherit" startIcon={<HomeIcon />}>
+            Usuarios
+          </Button>
           <Button component={Link} to="/consumtion" color="inherit" startIcon={<ShoppingCartIcon />}>
             Consumos
           </Button>
           <Button component={Link} to="/tapes" color="inherit" startIcon={<AssignmentIcon />}>
-            Asignaciones
+            Crear nuevo insumo
           </Button>
           <Button component={Link} to="/consumption" color="inherit" startIcon={<SportsEsportsIcon />}>
             Marcar Usos
@@ -45,6 +48,7 @@ function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
         <Route path="/consumtion" element={<Consumption />} />
         <Route path="/tapes" element={<Tapes />} />
         <Route path="/asign" element={<AsigTapes />} />
